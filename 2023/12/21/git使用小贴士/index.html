@@ -28,7 +28,7 @@
 <meta property="og:description" content="主要记录Git的常用命令、一些非典型操作及其意义解析，便于检索与回顾">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-12-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-02-26T08:16:55.630Z">
+<meta property="article:modified_time" content="2024-02-26T09:14:36.802Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -208,7 +208,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-02-26 16:16:55" itemprop="dateModified" datetime="2024-02-26T16:16:55+08:00">2024-02-26</time>
+                <time title="Modified: 2024-02-26 17:14:36" itemprop="dateModified" datetime="2024-02-26T17:14:36+08:00">2024-02-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -554,7 +554,8 @@
 <h3 id="错误问题"><a href="#错误问题" class="headerlink" title="错误问题"></a>错误问题</h3><h4 id="错误问题1"><a href="#错误问题1" class="headerlink" title="错误问题1"></a>错误问题1</h4><p>git clone时RPC failed; curl 18 transfer closed with outstanding read data remaining<br>git clone时报RPC failed; curl 18 transfer closed with outstanding read data remaining 错误</p>
 <p>原因1：缓存区溢出</p>
 <p>解决方法：命令行输入</p>
-<p>git config http.postBuffer 524288000<br>执行上面命令如果依旧clone失败，考虑可能原因2：网络下载速度缓慢</p>
+<p>git config http.postBuffer 524288000</p>
+<p>执行上面命令如果依旧clone失败，考虑可能原因2：网络下载速度缓慢</p>
 <p>解决方法：命令行输入</p>
 <p>git config –global http.lowSpeedLimit 0<br>git config –global http.lowSpeedTime 999999</p>
 <p>如果依旧clone失败，则首先浅层clone，然后更新远程库到本地<br>git clone –depth&#x3D;1 <a target="_blank" rel="noopener" href="http://gitlab.xxx.cn/yyy/zzz.git">http://gitlab.xxx.cn/yyy/zzz.git</a><br>git fetch –unshallow</p>

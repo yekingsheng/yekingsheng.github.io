@@ -4,7 +4,11 @@
     <title>ARM架构及相关概念</title>
     <url>/2023/12/04/test/</url>
     <content><![CDATA[<h2 id="ARM指令集"><a href="#ARM指令集" class="headerlink" title="ARM指令集"></a>ARM指令集</h2><h3 id="Thumb指令集"><a href="#Thumb指令集" class="headerlink" title="Thumb指令集"></a>Thumb指令集</h3><p>其是ARM指令集的一个子集，16位的 代码宽度</p>
-<h2 id="哈佛架构与冯诺依曼架构"><a href="#哈佛架构与冯诺依曼架构" class="headerlink" title="哈佛架构与冯诺依曼架构"></a>哈佛架构与冯诺依曼架构</h2>]]></content>
+<h2 id="哈佛架构与冯诺依曼架构"><a href="#哈佛架构与冯诺依曼架构" class="headerlink" title="哈佛架构与冯诺依曼架构"></a>哈佛架构与冯诺依曼架构</h2><h2 id="makefile-的"><a href="#makefile-的" class="headerlink" title="makefile 的"></a>makefile 的</h2><p>假设 BUILD_DIR 是一个目录路径，而你想要匹配该目录中的所有 .d 文件，不论其嵌套层级如何。在这种情况下，你可以使用以下代码：</p>
+<p>-include $(wildcard $(BUILD_DIR)&#x2F;*.d)<br>这行代码将会匹配 BUILD_DIR 目录下的所有 .d 文件，但不会递归查找其子目录。如果你想要递归地包含所有子目录中的 .d 文件，你可以使用递归通配符 **，但这需要确保你的 Make 版本支持该功能。例如：</p>
+<p>-include $(wildcard $(BUILD_DIR)&#x2F;**&#x2F;*.d)<br>如果你的 Make 版本不支持递归通配符 **，那么你可能需要使用其他方法来递归地包含所有子目录中的 .d 文件，比如使用 find 命令来生成文件列表。例如：</p>
+<p>-include $(shell find $(BUILD_DIR) -type f -name ‘*.d’)<br>这会使用 find 命令来查找 BUILD_DIR 及其所有子目录中的所有 .d 文件，并将它们包含进来。</p>
+]]></content>
   </entry>
   <entry>
     <title>Git使用小贴士</title>
@@ -331,7 +335,8 @@
 <h3 id="错误问题"><a href="#错误问题" class="headerlink" title="错误问题"></a>错误问题</h3><h4 id="错误问题1"><a href="#错误问题1" class="headerlink" title="错误问题1"></a>错误问题1</h4><p>git clone时RPC failed; curl 18 transfer closed with outstanding read data remaining<br>git clone时报RPC failed; curl 18 transfer closed with outstanding read data remaining 错误</p>
 <p>原因1：缓存区溢出</p>
 <p>解决方法：命令行输入</p>
-<p>git config http.postBuffer 524288000<br>执行上面命令如果依旧clone失败，考虑可能原因2：网络下载速度缓慢</p>
+<p>git config http.postBuffer 524288000</p>
+<p>执行上面命令如果依旧clone失败，考虑可能原因2：网络下载速度缓慢</p>
 <p>解决方法：命令行输入</p>
 <p>git config –global http.lowSpeedLimit 0<br>git config –global http.lowSpeedTime 999999</p>
 <p>如果依旧clone失败，则首先浅层clone，然后更新远程库到本地<br>git clone –depth&#x3D;1 <a href="http://gitlab.xxx.cn/yyy/zzz.git">http://gitlab.xxx.cn/yyy/zzz.git</a><br>git fetch –unshallow</p>
