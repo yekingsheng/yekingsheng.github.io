@@ -28,7 +28,7 @@
 <meta property="og:description" content="记录ARM架构体系、指令集、寄存器等相关的一些概念知识">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-12-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-05-17T03:13:22.890Z">
+<meta property="article:modified_time" content="2024-05-17T03:20:19.586Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -208,7 +208,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-05-17 11:13:22" itemprop="dateModified" datetime="2024-05-17T11:13:22+08:00">2024-05-17</time>
+                <time title="Modified: 2024-05-17 11:20:19" itemprop="dateModified" datetime="2024-05-17T11:20:19+08:00">2024-05-17</time>
               </span>
 
           
@@ -225,9 +225,8 @@
       
         <h2 id="ARM指令集"><a href="#ARM指令集" class="headerlink" title="ARM指令集"></a>ARM指令集</h2><h3 id="Thumb指令集"><a href="#Thumb指令集" class="headerlink" title="Thumb指令集"></a>Thumb指令集</h3><p>其是ARM指令集的一个子集，16位的 代码宽度</p>
 <h2 id="哈佛架构与冯诺依曼架构"><a href="#哈佛架构与冯诺依曼架构" class="headerlink" title="哈佛架构与冯诺依曼架构"></a>哈佛架构与冯诺依曼架构</h2><h2 id="makefile-的记录"><a href="#makefile-的记录" class="headerlink" title="makefile 的记录"></a>makefile 的记录</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-include $(wildcard $(BUILD_DIR)/*/*/*.d)</span><br></pre></td></tr></table></figure>
-<p>这行代码使用了 wildcard 函数来获取所有匹配模式 $(BUILD_DIR)&#x2F;<em>&#x2F;</em>&#x2F;*.d 的文件列表，并通过 -include 指令将它们包含进来。这个操作通常用于包含生成的依赖文件，以确保在编译时能够正确地处理文件依赖关系。</p>
+<p>这行代码使用了 wildcard 函数来获取所有匹配模式<code>$(BUILD_DIR)/*/*/*.d</code>的文件列表，并通过 -include 指令将它们包含进来。这个操作通常用于包含生成的依赖文件，以确保在编译时能够正确地处理文件依赖关系。</p>
 <p>让我们来解释一下：</p>
-<p>wildcard 函数用于匹配指定模式的文件列表。在这里<code>$(wildcard $(BUILD_DIR)/*/*.d) </code>将匹配所有三层子目录中的 .d 文件。<br>是一个变量，表示构建目录的路径。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(BUILD_DIR)</span><br><span class="line">是一个变量，表示构建目录的路径。</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;*&quot;</span><br><span class="line">是通配符，匹配任意字符。</span><br></pre></td></tr></table></figure>
