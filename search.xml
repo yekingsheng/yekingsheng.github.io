@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>ARM架构及相关概念</title>
+    <title>makefile 使用</title>
     <url>/2023/12/04/test/</url>
-    <content><![CDATA[<h2 id="ARM指令集"><a href="#ARM指令集" class="headerlink" title="ARM指令集"></a>ARM指令集</h2><h3 id="Thumb指令集"><a href="#Thumb指令集" class="headerlink" title="Thumb指令集"></a>Thumb指令集</h3><p>其是ARM指令集的一个子集，16位的 代码宽度</p>
-<h2 id="哈佛架构与冯诺依曼架构"><a href="#哈佛架构与冯诺依曼架构" class="headerlink" title="哈佛架构与冯诺依曼架构"></a>哈佛架构与冯诺依曼架构</h2><h2 id="makefile-的记录"><a href="#makefile-的记录" class="headerlink" title="makefile 的记录"></a>makefile 的记录</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-include $(wildcard $(BUILD_DIR)/*/*/*.d)</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="makefile-的记录"><a href="#makefile-的记录" class="headerlink" title="makefile 的记录"></a>makefile 的记录</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-include $(wildcard $(BUILD_DIR)/*/*/*.d)</span><br></pre></td></tr></table></figure>
 <p>这行代码使用了 wildcard 函数来获取所有匹配模式<code>$(BUILD_DIR)/*/*/*.d</code>的文件列表，并通过 -include 指令将它们包含进来。这个操作通常用于包含生成的依赖文件，以确保在编译时能够正确地处理文件依赖关系。</p>
 <p>让我们来解释一下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$(BUILD_DIR)</span><br><span class="line">是一个变量，表示构建目录的路径。</span><br></pre></td></tr></table></figure>
@@ -19,6 +18,7 @@
 <p>如果你的 Make 版本不支持递归通配符 **，那么你可能需要使用其他方法来递归地包含所有子目录中的 .d 文件，比如使用 find 命令来生成文件列表。例如：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-include $(shell find $(BUILD_DIR) -type f -name &#x27;*.d&#x27;)</span><br></pre></td></tr></table></figure>
 <p>这会使用 find 命令来查找 BUILD_DIR 及其所有子目录中的所有 .d 文件，并将它们包含进来。</p>
+<p>但是在Mac os中find指令并不支持，所以使用下面指令替换<br><code>DEP_FILES = $(C_OBJECTS:.o=.d)</code><br><code>-include $(DEP_FILES)</code></p>
 ]]></content>
   </entry>
   <entry>
